@@ -1,0 +1,233 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Editon Consortium Publishing | Medical Sciences</title>
+
+	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
+
+	<!--Stylesheets-->
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bulmahelper.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bulma-carousel.min.css' %}"/>
+	
+	<!--Scripts-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/dropzone.js' %}"></script>
+	<script src="{% static 'js/bulma-carousel.min.js' %}"></script>
+	<script src="https://kit.fontawesome.com/3d4a04bbba.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div>
+		{% include 'index/navbar.html' %}
+		<!--Main Content-->
+		<div class='container'>
+			<div class="columns has-margin-top-30 has-padding-40">
+				<div class="column is-9">
+					<div class="container">
+						<p class="is-size-2 is-size-4-mobile has-text-dark" style='font-weight:700'>Medical Sciences</p>
+						<div class='is-divider'></div>
+						<div class='container'>
+							<div class='columns is-multiline'>
+								<!--easjms-->
+								<div class='column is-6'>
+									<div class='has-padding-10 has-background-white is-block'>
+										<article class="media">
+											<div class="media-left">
+												<figure class="image is-64x128">
+													<img src = "{{ easjms.journal_thumb.url }}"  style="max-width:128px; height:200px;">
+												</figure>
+											</div>
+											<div class="media-content">
+												<div class="content">
+													<p>
+														<a href="https://www.easpublisher.com/easjms">{{ easjms.journal_name }}</a><br>
+														<span> <strong>ISSN(Print)</strong> : <span class="has-text-danger">{{ easjms.issn_print }} </span></span><br>
+														<span> <strong>ISSN(Online)</strong> : <span class="has-text-danger"> {{ easjms.issn_online }} </span></span><br>
+														<span> <strong>Publisher</strong> : {{ easjms.publisher }} </span><br>
+														<span> <strong>Country Origin</strong> : {{ easjms.origin_country }} </span><br>
+														<span class="is-pulled-right has-margin-top-30" >
+															<a href="https://www.easpublisher.com/easjms" class="button view-button">View More</a>
+														</span>
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
+								</div>
+								<!--easjacc-->
+								<div class='column is-6'>
+									<div class='has-padding-10 has-background-white is-block'>
+										<article class="media">
+											<div class="media-left">
+												<figure class="image is-64x128">
+													<img src = "{{ easjacc.journal_thumb.url }}"  style="max-width:128px; height:200px;">
+												</figure>
+											</div>
+											<div class="media-content">
+												<div class="content">
+													<p>
+														<a href="https://www.easpublisher.com/easjacc">{{ easjacc.journal_name }}</a><br>
+														<span> <strong>ISSN(Print)</strong> : <span class="has-text-danger">{{ easjacc.issn_print }} </span></span><br>
+														<span> <strong>ISSN(Online)</strong> : <span class="has-text-danger"> {{ easjacc.issn_online }} </span></span><br>
+														<span> <strong>Publisher</strong> : {{ easjacc.publisher }} </span><br>
+														<span> <strong>Country Origin</strong> : {{ easjacc.origin_country }} </span><br>
+														<span class="is-pulled-right has-margin-top-30" >
+															<a href="https://www.easpublisher.com/easjacc" class="button view-button">View More</a>
+														</span>
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
+								</div>
+								<!--easjop-->
+								<div class='column is-6'>
+									<div class='has-padding-10 has-background-white is-block'>
+										<article class="media">
+											<div class="media-left">
+												<figure class="image is-64x128">
+													<img src = "{{ easjop.journal_thumb.url }}"  style="max-width:128px; height:200px;">
+												</figure>
+											</div>
+											<div class="media-content">
+												<div class="content">
+													<p>
+														<a href="https://www.easpublisher.com/easjop">{{ easjop.journal_name }}</a><br>
+														<span> <strong>ISSN(Print)</strong> : <span class="has-text-danger">{{ easjop.issn_print }} </span></span><br>
+														<span> <strong>ISSN(Online)</strong> : <span class="has-text-danger"> {{ easjop.issn_online }} </span></span><br>
+														<span> <strong>Publisher</strong> : {{ easjop.publisher }} </span><br>
+														<span> <strong>Country Origin</strong> : {{ easjop.origin_country }} </span><br>
+														<span class="is-pulled-right has-margin-top-30" >
+															<a href="https://www.easpublisher.com/easjop" class="button view-button">View More</a>
+														</span>
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
+								</div>
+								<!--easjpid-->
+								<div class='column is-6'>
+									<div class='has-padding-10 has-background-white is-block'>
+										<article class="media">
+											<div class="media-left">
+												<figure class="image is-64x128">
+													<img src = "{{ easjpid.journal_thumb.url }}"  style="max-width:128px; height:200px;">
+												</figure>
+											</div>
+											<div class="media-content">
+												<div class="content">
+													<p>
+														<a href="https://www.easpublisher.com/easjpid">{{ easjpid.journal_name }}</a><br>
+														<span> <strong>ISSN(Print)</strong> : <span class="has-text-danger">{{ easjpid.issn_print }} </span></span><br>
+														<span> <strong>ISSN(Online)</strong> : <span class="has-text-danger"> {{ easjpid.issn_online }} </span></span><br>
+														<span> <strong>Publisher</strong> : {{ easjpid.publisher }} </span><br>
+														<span> <strong>Country Origin</strong> : {{ easjpid.origin_country }} </span><br>
+														<span class="is-pulled-right has-margin-top-30" >
+															<a href="https://www.easpublisher.com/easjpid" class="button view-button">View More</a>
+														</span>
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
+								</div>
+								<!--easjrit-->
+								<div class='column is-6'>
+									<div class='has-padding-10 has-background-white is-block'>
+										<article class="media">
+											<div class="media-left">
+												<figure class="image is-64x128">
+													<img src = "{{ easjrit.journal_thumb.url }}"  style="max-width:128px; height:200px;">
+												</figure>
+											</div>
+											<div class="media-content">
+												<div class="content">
+													<p>
+														<a href="https://www.easpublisher.com/easjrit">{{ easjrit.journal_name }}</a><br>
+														<span> <strong>ISSN(Print)</strong> : <span class="has-text-danger">{{ easjrit.issn_print }} </span></span><br>
+														<span> <strong>ISSN(Online)</strong> : <span class="has-text-danger"> {{ easjrit.issn_online }} </span></span><br>
+														<span> <strong>Publisher</strong> : {{ easjrit.publisher }} </span><br>
+														<span> <strong>Country Origin</strong> : {{ easjrit.origin_country }} </span><br>
+														<span class="is-pulled-right has-margin-top-30" >
+															<a href="https://www.easpublisher.com/easjrit" class="button view-button">View More</a>
+														</span>
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
+								</div>
+								<!--easjdom-->
+								<div class='column is-6'>
+									<div class='has-padding-10 has-background-white is-block'>
+										<article class="media">
+											<div class="media-left">
+												<figure class="image is-64x128">
+													<img src = "{{ easjdom.journal_thumb.url }}"  style="max-width:128px; height:200px;">
+												</figure>
+											</div>
+											<div class="media-content">
+												<div class="content">
+													<p>
+														<a href="https://www.easpublisher.com/easjdom">{{ easjdom.journal_name }}</a><br>
+														<span> <strong>ISSN(Print)</strong> : <span class="has-text-danger">{{ easjdom.issn_print }} </span></span><br>
+														<span> <strong>ISSN(Online)</strong> : <span class="has-text-danger"> {{ easjdom.issn_online }} </span></span><br>
+														<span> <strong>Publisher</strong> : {{ easjdom.publisher }} </span><br>
+														<span> <strong>Country Origin</strong> : {{ easjdom.origin_country }} </span><br>
+														<span class="is-pulled-right has-margin-top-30" >
+															<a href="https://www.easpublisher.com/easjdom" class="button view-button">View More</a>
+														</span>
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
+								</div>
+								<!--easms-->
+								<div class='column is-6'>
+									<div class='has-padding-10 has-background-white is-block'>
+										<article class="media">
+											<div class="media-left">
+												<figure class="image is-64x128">
+													<img src = "{{ easms.journal_thumb.url }}"  style="max-width:128px; height:200px;">
+												</figure>
+											</div>
+											<div class="media-content">
+												<div class="content">
+													<p>
+														<a href="https://www.easpublisher.com/easms">{{ easms.journal_name }}</a><br>
+														<span> <strong>ISSN(Print)</strong> : <span class="has-text-danger">{{ easms.issn_print }} </span></span><br>
+														<span> <strong>ISSN(Online)</strong> : <span class="has-text-danger"> {{ easms.issn_online }} </span></span><br>
+														<span> <strong>Publisher</strong> : {{ easms.publisher }} </span><br>
+														<span> <strong>Country Origin</strong> : {{ easms.origin_country }} </span><br>
+														<span class="is-pulled-right has-margin-top-30" >
+															<a href="https://www.easpublisher.com/easms" class="button view-button">View More</a>
+														</span>
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="column">
+					{% include 'index/right-bar.html' %}
+				</div>
+			</div>
+		</div>
+
+		<!--FOOTER-->
+		{% include 'index/footer.html' %}
+	</div>
+
+</body>
+</html>

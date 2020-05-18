@@ -1,0 +1,328 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Editon Consortium Publishing| {{ journal.journal_name }}</title>
+
+	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
+
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bulmahelper.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bulma-carousel.min.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+	<!--Slick slider-->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/dropzone.js' %}"></script>
+	<script src="{% static 'js/bulma-carousel.min.js' %}"></script>
+	<script src="https://kit.fontawesome.com/3d4a04bbba.js" crossorigin="anonymous"></script>
+	<style>
+		.banner{
+			background-image:url( {{journal.journal_cover.url}} );
+			background-size:cover;
+			background-position:fixed;
+			border-radius:7px;
+			height: 30em;
+			box-shadow: 2px 2px 10px #333;
+		}
+		.banner-name{
+			background-color: rgba(0,0,0,0.5);
+		}
+		.member-items{
+			background-color: white;
+			width:200px;
+			height:100px;
+			padding: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<!--Header-->
+	
+	{% include 'index/navbar.html' %}
+	<div >
+
+		<div style='background-image: url({{journal.journal_cover.url}});background-size: cover;height: 50vh'>
+		</div>
+
+		
+		<!--Main Content-->
+		<section class="container">
+			<p class="is-size-2 is-size-4-mobile has-text-dark" style='font-weight:700'>{{ journal.journal_name}}</p>
+			<div class='is-divider'></div>
+			<div class="columns">
+				<!--Left Column-->
+				<div class="column is-9">
+					<!--Tabs-->
+					<div class="is-block has-background-white">
+						<div class="tabs is-boxed is-size-5 is-size-6-mobile">
+							<ul>
+								<li class="tab is-active" onclick="openTab(event,'1')"><a>Details</a></li>
+								<li class="tab" onclick="openTab(event,'2')"><a >Journal Description</a></li>
+								<li class="tab" onclick="openTab(event,'3')"><a >Editorial Board</a></li>
+								<li class="tab" onclick="openTab(event,'4')"><a >Archives</a></li>
+								<li class="tab" onclick="openTab(event,'5')"><a >Indexing</a></li>
+								<li class="tab" onclick="openTab(event,'6')"><a >Impact Factor</a></li>
+							</ul>
+						</div>
+
+						<div class="container is-fluid has-padding-20">
+
+
+							<!--Details tab-->
+							<div id="1" class="content-tab is-active">
+								<p>
+									<table>
+										<tr >
+											<th class="has-text-right">Journal Name:</th>
+											<td class="has-text-left"> &nbsp; {{journal.journal_name}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">Abbr. Title:</th>
+											<td class="has-text-left"> &nbsp; {{journal.abbr_title}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">ISSN(Print):</th>
+											<td class="has-text-left"> &nbsp; {{journal.issn_print}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">ISSN(Online):</th>
+											<td class="has-text-left"> &nbsp; {{journal.issn_online}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">Frequency:</th>
+											<td class="has-text-left"> &nbsp; {{journal.frequency}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">Language:</th>
+											<td class="has-text-left"> &nbsp; {{journal.language}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">Chief Editor:</th>
+											<td class="has-text-left"> &nbsp; {{journal.chief_editor}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">Publisher:</th>
+											<td class="has-text-left"> &nbsp; {{journal.publisher}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">Country of Origin:</th>
+											<td class="has-text-left"> &nbsp; {{journal.origin_country}}</td>
+										</tr>
+									</table>
+								</p>
+							</div>
+
+							<!--Description tab-->
+							<div id="2" class="content-tab"  style="display:none"	>
+								<p>
+									<span class='is-size-3'>About Journal</span><br>
+									{{ journal.journal_info}}<br><br>
+									<span class='is-size-3'>Scope of Journal</span><br>
+									{{ journal.journal_scope}}<br><br>
+								</p>
+							</div>
+
+							<!--Editorial Board tab-->
+							<div id="3" class="content-tab" style="display:none;overflow:auto;">
+								<p>	
+									{% if editors %}
+									<table>
+										{% for editor in editors %}
+										<tr >
+											<th class="has-text-right">{{editor.designation}}: &nbsp;</th>
+											<td class="has-text-left">{{editor.editor_name}}<br>
+												{{editor.editor_info}}
+											</td>
+										</tr>
+										{% endfor %}
+									</table>
+									{% else %}
+									<p class="has-text-danger">No entries yet, but soon..</p>
+									{% endif%}
+								</p>
+
+							</div>
+
+							<!--Archive tab-->
+							<div id="4" class="content-tab" style="display:none">
+								{% if volumes %}
+								{% regroup volumes|dictsortreversed:"volume_year" by volume_year as volume_year_list %}
+
+								<ul>
+									{% for volume_year in volume_year_list %}
+									<li><p class="is-size-5 is-size-6-mobile">{{ volume_year.grouper }}</p>
+										<ul  class='has-margin-top-10'>
+											{% for volume in volume_year.list %}
+											<a href="{% url 'volume_articles' url=journal.journal_url vol=volume issue=volume.issue_name%}" target="_blank">
+												<button class="button is-danger is-outlined">{{volume}} {{volume.issue_name}}</button>
+											</a>
+											{% endfor %}
+										</ul>
+									</li><br>
+									{% endfor %}
+								</ul>
+								{% else %}
+								<p class="has-text-danger">No volumes added yet</p>
+								{% endif %}
+							</div>
+
+							<!--Indexing -->
+							<div id="5" class="content-tab" style="display:none">
+								<div class='has-padding-20'>
+									{% if indexing %}
+									<div class='columns is-multiline'>
+										{% for index in indexing %}
+										<div class='column is-4'>
+											<figure class='image'>
+												<a href='{{index.index_url}}' target='_blank'><img src='{{index.index_picture.url}}'></a>
+											</figure>
+										</div>
+										{% endfor %}
+									</div>
+									{% else %}
+									<p class='has-text-danger'>No Indexing added yet</p>
+									{% endif %}
+								</div>
+							</div>
+
+							<!--Impact Factor -->
+							<div id="6" class="content-tab" style="display:none">
+								<div class='container has-padding-bottom-30'>
+									{% if impact_factor %}
+									<div class='container' style='max-width: 50%'>
+										<div class='columns is-mobile'>
+											<div class='column is-4 has-text-centered'>
+												<p class='is-size-4'>Year</p>
+											</div>
+											<div class='column has-text-centered'>
+												<p class='is-size-4'>Journal Impact Factor</p>
+											</div>
+										</div>
+										{% for imp_fac in impact_factor %}
+										<div class='columns is-mobile has-margin-top-10'>
+											<div class='column is-4 has-text-centered' style='background-color: #2c3e50;color :white;border:5px solid #2c3e50;'>
+												{{imp_fac.impact_year}}
+											</div>
+											<div class='column has-text-centered'  style='border:5px solid #2c3e50;'>
+												<a href='{{imp_fac.impact_url}}' target='_blank'>{{imp_fac.impact_factor}}&nbsp;<i class="has-margin-left-10 fa fa-link fa-sm" aria-hidden="true"></i>
+												</a>
+											</div>
+										</div>
+										{% endfor %}
+									</div>
+									{% else %}
+									<p class='has-text-danger'>Impact Factor not added yet</p>
+									{% endif %}
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Recent articles-->
+					<div class="has-padding-20 has-margin-top-20 is-block has-background-white">
+						<p class="is-size-3 is-size-4-mobile has-text-grey">Latest Articles</p>
+						<!--articles-->
+						{% if articles%}
+						{% for article in articles %}
+						<div class="box">
+							<article class="media">
+								<div class="media-content">
+									<div class="level">
+										<div class="level-left">
+											<p><button class="button is-danger">{{ article.article_type}}</button></p>
+										</div>
+										<div class="level-right">
+											<p>{{ article.publish_date }}</p>
+										</div>
+									</div>
+									<div class="content">
+										<a href="{{article.article.url}}" class="is-primary">{{ article.article_name}}</a>
+										<p>
+											<i class="fa fa-user"></i> &nbsp;{{ article.author }}<br>
+											{% if article.article_abbr %}
+											<i class="fa fa-tag"></i> &nbsp;{{ article.article_abbr }}<br>
+											{% endif %}
+											<i class="fa fa-tag"></i> &nbsp;DOI : <span class='has-text-danger'>{{article.doi}}</span>
+										</p>
+										<br>
+										<div class='is-inline-block has-margin-top-10' >
+											<button class='article-button has-padding-right-20 has-padding-left-20 jd-abstract-button' data-id='{{ forloop.counter }}'>
+												<i class='fa fa-scroll'></i> Abstract
+											</button>
+											<a href="{{article.article.url}}" download class='article-button has-padding-right-20 has-padding-left-20'>
+												<i class='fa fa-file-pdf'></i> PDF
+											</a>
+											<a href="{{article.article.url}}" class='article-button  has-padding-right-20 has-padding-left-20'>
+												<i class='fa fa-file'></i> Full-Text
+											</a>
+											<a href="{{article.article.url}}" download class='article-button has-padding-right-20 has-padding-left-20' style='background-color: green; color:white'>e-Pub
+											</a>	
+										</div>
+									</div>
+									<div class='jd-abstract-panel-{{forloop.counter}}' style='display: none'>
+										{% if article.abstract %}
+										{{article.abstract}}
+										{% else %}
+										<p> Abstract Not Found </p>
+										{% endif %}
+									</div>
+								</div>
+							</article>
+						</div>
+						{% endfor %}
+						{% else %}
+						<p class="has-text-danger">No Articles Added yet</p>
+						{% endif%}
+					</div>
+				</div>
+
+				<!--Right Column-->
+				<div class="column has-margin-top-10">
+					{% include 'index/right-bar.html' %}
+				</div>
+			</div>
+		</section>
+
+		<!--members in-->
+		{% if memberin %}
+		<div class='is-block has-background-white has-margin-top-50 has-padding-top-30 has-padding-bottom-30'>
+			<div class='container'>
+				<p class="is-size-4" style='color:#2d3436'>Members In</p><br><br>
+				<div class='membersin-carousel'>
+					{% for company in memberin %}
+					<div class='has-padding-20 is-block has-background-white'>
+						<figure class='image '>
+							<img src="{{ company.company_logo.url }}" alt='{{company.company_name}}' style='width:120px;max-height:50px;margin:auto'>
+						</figure>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		{% include 'index/footer.html' %}
+	</div>
+	<script type="text/javascript">
+		function openTab(evt, tabName) {
+			var i, x, tablinks;
+			x = document.getElementsByClassName("content-tab");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tab");
+			for (i = 0; i < x.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+			}
+			document.getElementById(tabName).style.display = "block";
+			evt.currentTarget.className += " is-active";
+		}
+	</script>
+</body>
+</html>

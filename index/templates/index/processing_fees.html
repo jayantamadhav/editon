@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Editon Consortium Publishing | Processing Fees</title>
+
+	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
+
+	<!--Stylesheets-->
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bulmahelper.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bulma-carousel.min.css' %}"/>
+	
+	<!--Scripts-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/dropzone.js' %}"></script>
+	<script src="{% static 'js/bulma-carousel.min.js' %}"></script>
+	<script src="https://kit.fontawesome.com/3d4a04bbba.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div>
+		{% include 'index/navbar.html' %}
+		<!--Banner-->
+		<div style='background-image: url({% static "media/pay-online.jpg" %});background-size: cover;height: 50vh'>
+		</div>
+
+
+		<section class="container has-margin-top-30" >
+			<p class="is-size-3 is-size-4-mobile has-text-dark" style='font-weight:700'>Processing Fees</p>
+			<div class='is-divider'></div>
+			<div class='columns'>
+				<div class='column is-9'>
+					<div class="container" >
+						{% if journal_fees %}
+						<table class="table is-fullwidth is-hoverable">
+							<thead class="has-background-dark">
+								<tr>
+									<th class="has-text-white">Journal Name</th>
+									<th class="has-text-white">Fee(USD)</th>
+									<th class="has-text-white">Fee(INR)</th>
+									<th class="has-text-white">Fee(KES)</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for fee in journal_fees %}
+								<tr>
+									<td> {{fee.journal}}</td>
+									<td> {{fee.usd}} USD</td>
+									<td> {{fee.inr}} INR</td>
+									<td> {{fee.kes}} KES</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+						{% else %}
+						<p class="has-text-danger">No entries added yet, kindly contact through email..</p>
+						{% endif %}
+						</p>
+					</div>
+				</div>
+				<div class='column'>
+					{% include 'index/right-bar.html' %}
+				</div>
+			</div>
+
+			</section>
+			{% include 'index/footer.html' %}
+		</div>
+	</body>
+	</html>

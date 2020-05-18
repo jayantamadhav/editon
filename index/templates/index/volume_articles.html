@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Editon Consortium Publishing | {{volume_name}}-{{issue_name}}</title>
+
+	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
+
+	<!--Stylesheets-->
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bulmahelper.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bulma-carousel.min.css' %}"/>
+	
+	<!--Scripts-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/dropzone.js' %}"></script>
+	<script src="{% static 'js/bulma-carousel.min.js' %}"></script>
+	<script src="https://kit.fontawesome.com/3d4a04bbba.js" crossorigin="anonymous"></script>
+	<style>
+		.banner{
+			background-image:url( {{journal.journal_cover.url}} );
+			background-size:cover;
+			background-position:fixed;
+			border-radius:7px;
+			height: 30em;
+			box-shadow: 2px 2px 10px #333;
+		}
+		.banner-name{
+			background-color: rgba(0,0,0,0.5);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="index-background-container" >
+		<!--Header-->
+		{% include 'index/navbar.html' %}
+		<div style='background-image: url({{journal.journal_cover.url}});background-size: cover;height: 50vh'>
+		</div>
+
+		<!--Main Content-->
+		<section class="container">
+			<p class="is-size-2 is-size-4-mobile has-text-dark" style='font-weight:700'>{{ journal.journal_name}}<br>{{volume_name}}-{{issue_name}}</p>
+			<div class='is-divider'></div>
+			<div class="columns is-variable">
+				<!--Main Block-->
+				<div class="column is-9">
+					<!--Recent articles-->
+					<div class="has-padding-20 has-margin-top-20">
+						<!--articles-->
+						<div class="container" >
+							{% if articles%}
+							{% for article in articles %}
+							<div class="box">
+							<article class="media">
+								<div class="media-content">
+									<div class="level">
+										<div class="level-left">
+											<p><button class="button is-danger">{{ article.article_type}}</button></p>
+										</div>
+										<div class="level-right">
+											<p>{{ article.publish_date }}</p>
+										</div>
+									</div>
+									<div class="content">
+										<a href="{{article.article.url}}" class="is-primary">{{ article.article_name}}</a>
+										<p>
+											<i class="fa fa-user"></i> &nbsp;{{ article.author }}<br>
+											{% if article.article_abbr %}
+											<i class="fa fa-tag"></i> &nbsp;{{ article.article_abbr }}<br>
+											{% endif %}
+											<i class="fa fa-tag"></i> &nbsp;DOI : <span class='has-text-danger'>{{article.doi}}</span>
+										</p>
+										<br>
+										<div class='is-inline-block has-margin-top-10' >
+											<button class='article-button has-padding-right-20 has-padding-left-20 va-abstract-button' data-id='{{ forloop.counter }}'>
+												<i class='fa fa-scroll'></i> Abstract
+											</button>
+											<a href="{{article.article.url}}" download class='article-button has-padding-right-20 has-padding-left-20'>
+												<i class='fa fa-file-pdf'></i> PDF
+											</a>
+											<a href="{{article.article.url}}" class='article-button  has-padding-right-20 has-padding-left-20'>
+												<i class='fa fa-file'></i> Full-Text
+											</a>
+											<a href="{{article.article.url}}" download class='article-button has-padding-right-20 has-padding-left-20' style='background-color: green; color:white'>e-Pub
+											</a>	
+										</div>
+									</div>
+									<div class='va-abstract-panel-{{forloop.counter}}' style='display: none'>
+										{% if article.abstract %}
+										{{article.abstract}}
+										{% else %}
+										<p> Abstract Not Found </p>
+										{% endif %}
+									</div>
+								</div>
+							</article>
+						</div>
+							{% endfor %}
+							{% else %}
+							<p class="has-text-danger">No Articles Added yet</p>
+							{% endif%}
+						</div>
+					</div>
+				</div>
+
+				<!--Right Bar-->
+				<div class="column">
+					{% include 'index/right-bar.html'%}
+				</div>
+			</div>
+		</section>
+
+		{% include 'index/footer.html' %}
+	</div>
+	<script type="text/javascript">
+		function openTab(evt, tabName) {
+			var i, x, tablinks;
+			x = document.getElementsByClassName("content-tab");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tab");
+			for (i = 0; i < x.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+			}
+			document.getElementById(tabName).style.display = "block";
+			evt.currentTarget.className += " is-active";
+		}
+	</script>
+</body>
+</html>

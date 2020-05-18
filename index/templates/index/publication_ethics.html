@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Editon Consortium Publishing | Publication Ethics</title>
+
+	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
+
+	<!--Stylesheets-->
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bulmahelper.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bulma-carousel.min.css' %}"/>
+	
+	<!--Scripts-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/dropzone.js' %}"></script>
+	<script src="{% static 'js/bulma-carousel.min.js' %}"></script>
+	<script src="https://kit.fontawesome.com/3d4a04bbba.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	
+	<!--HEADER-->
+	{% include 'index/navbar.html' %}
+	<!--Banner-->
+	<div style='background-image: url({% static "media/author-guideline.jpg" %});background-size: cover;height: 50vh'>
+	</div>
+
+	<section class="container has-margin-top-20">
+		<p class="is-size-3 is-size-4-mobile has-text-dark" style='font-weight:700'>Publication Ethics</p>
+		<div class='is-divider'></div>
+		<div class='columns is-clearfix'>
+			<div class='column is-9'>
+				<div class="container has-padding-40 is-block has-background-white" >
+					<p>
+						<strong>Authorship</strong>: <br><br>
+						Authorship should be limited to people who have contributed substantially to the work. The corresponding author must have obtained permission from all the authors mentioned in the manuscript. The corresponding author is responsible for ensuring adherence to all editorial and submission policies and for any communications and actions that may be necessary after publication. A maximum of two corresponding authors are allowed for the responsibilities associated. 
+
+						<br><br><br><br>
+
+						<strong>Conflict Of Interest</strong>: <br><br>
+						The authors must declare any conflict of interest with any financial body or funding agency or anything else that might influence the results or interpretation of their manuscript. All authors, members, reviewers and editors must disclose any association that poses a conflict of interest in connection with the manuscript. The author(s) ought to hold obligation in giving conflicts any to stay away from further conflicts.  
+
+						<br><br><br><br>
+
+						<strong>Plagiarism and duplicate submission</strong>: <br><br>
+						Plagiarism is duplicating the precise of publishing information. EAS Publisher cross checks each submitted manuscript that is been submitted to any of its associate publishing journal. Any article that has incompletely/totally with plagiarized information will be dismissed promptly. 
+						<br>
+						Manuscripts submitted to EAS Publisher journals should not have been published before and not concurrently be submitted elsewhere.  If duplicate submission is detected during peer review, the manuscript may be rejected. If it is detected after publication, the manuscript may be retracted. 
+
+
+						<br><br><br><br>
+
+						<strong>Open Access Policy</strong>: <br><br>
+						EAS Publisher provides immediate open access to its content on making freely available to the global exchange of knowledge in non-commercial purpose. Manuscripts are published under the CC-BY-NC license, which allows the manuscript to be freely shared or used, as long as attribution is given for non-commercial purpose. Authors can freely to post the published manuscript on personal websites, institutional repositories, and any other database.   
+
+						<br><br><br><br>
+
+						<strong>Privacy Protection</strong>: <br><br>
+						Editor(s), Reviewer(s) should be consciously taking care of the work of the author(s). Editor(s) and Reviewer(s) should not utilize/disperse the unpublished work.  
+
+						<br><br><br><br>
+
+						<strong>Human and Animal Rights</strong>: <br><br>
+						Clear proclamations and ethical clearance statements should be provided while submitting article if it requires. The work including animal models and human volunteers need to submit the essential proclamations. 
+					</p>
+				</div>
+			</div>
+			<div class='column'>
+				{% include 'index/right-bar.html' %}
+			</div>
+		</div>
+	</section>
+
+	{% include 'index/footer.html' %}
+</body>
+</html>

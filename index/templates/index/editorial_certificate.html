@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Editon Consortium Publishing| Editorial Certificate</title>
+
+	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
+
+	<!--Stylesheets-->
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bulmahelper.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bulma-carousel.min.css' %}"/>
+	
+	<!--Scripts-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/dropzone.js' %}"></script>
+	<script src="{% static 'js/bulma-carousel.min.js' %}"></script>
+	<script src="https://kit.fontawesome.com/3d4a04bbba.js" crossorigin="anonymous"></script>
+	<script src="https://www.paypal.com/sdk/js?client-id=AT7AeMHTVZ9tRAzO_TDjeqOD89Do6uPO3XBVfo6Dk1-AGT12BNJoL0uMaJx9s5p7y_t5YseE3MTm3lVJ"></script>
+</head>
+<body>
+	
+	<!--HEADER-->
+	{% include 'index/navbar.html' %}
+	<!--Banner-->
+	<div style='background-image: url({% static "media/author-guideline.jpg" %});background-size: cover;height: 50vh'>
+	</div>
+
+	<section class="container has-margin-top-20">
+		<p class="is-size-3 is-size-4-mobile has-text-dark" style='font-weight:700'>Editorial Certificate</p>
+		<div class='is-divider'></div>
+		<div class='columns is-clearfix'>
+			<div class='column is-9'>
+				<div class="container has-padding-40 is-block has-background-white" >
+					<form id='publication-certificate-form' enctype="multipart/form-data" method='post'>
+						{% csrf_token %}
+						<p>If you want to receive your chief-editorial certificate, associate editor or reviewer certificate, you need to fill up the form with given information and your certificate will be emailed within 48 hours.  </p><br>
+						<div class="field">
+							<label class="label">Full Name (as to be printed on certificate)</label>
+							<div class="control">
+								<input name='name' class="input" type="text" placeholder="Enter full name">
+							</div>
+						</div>
+
+						<div class="field">
+							<label class="label">Complete Affiliation (as to be printed in certificate)</label>
+							<div class="control">
+								<input name='affiliation' class="input" type="text" placeholder="Enter Complete affiliation">
+							</div>
+						</div>
+
+						<div class="field">
+							<label class="label">Select Journal</label>
+							<div class="control is-fullwidth">
+								<div class="select is-fullwidth">
+									<select name='journal' required=true>
+										<option selected disabled>Select Journal</option>
+										{% if journals %}
+										{% for journal in journals %}
+										<option>{{ journal.journal_name}}</option>
+										{% endfor %}
+										{% else %}
+										<option disabled>No Journals Added</option>
+										{% endif %}
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="field">
+							<label class="label">Select Certificate</label>
+							<div class="control is-fullwidth">
+								<div class="select is-fullwidth">
+									<select name='certificate' required=true>
+										<option selected disabled>Select Certificate</option>
+										<option>Chief-Editor Certificate</option>
+										<option>Associate Editor Certificate</option>
+									</select>
+								</div>
+							</div>
+						</div>	
+
+						<div class="columns is-variable">
+							<div class="column">
+								<div class='field'>
+
+									<label class="label">Email</label>
+									<div class="control">
+										<input name='email' class="input" type="email" placeholder="Enter Email" required=true>
+									</div>
+								</div>
+							</div>
+							<div class="column">
+								<div class='field'>
+
+									<label class="label">Mobile </label>
+									<div class="control">
+										<input name='phone' class="input" type="text" placeholder="Enter Mobile e.g +1-xxxxxxxxxx" required=true>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<button id="submit-manuscript" class="button is-info" type='submit'>Submit <i class='fa fa-paper-plane'></i></button>
+					</form>
+				</div>
+			</div>
+			<div class='column'>
+				{% include 'index/right-bar.html' %}
+			</div>
+		</div>
+	</section>
+
+	{% include 'index/footer.html' %}
+</body>
+</html>

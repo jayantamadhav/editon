@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Editon Consortium Publishing| Journals</title>
+
+	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
+
+	<!--Stylesheets-->
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bulmahelper.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bulma-carousel.min.css' %}"/>
+	
+	<!--Scripts-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/dropzone.js' %}"></script>
+	<script src="{% static 'js/bulma-carousel.min.js' %}"></script>
+	<script src="https://kit.fontawesome.com/3d4a04bbba.js" crossorigin="anonymous"></script>
+	<style type="text/css">
+		.grid-container {
+			display: grid;
+			grid-template-columns: auto auto;
+			grid-gap: 10px;
+		}
+		.grid-container > div {
+			border:1px solid #ccc;
+			border-radius: 5px;
+		}
+		.view-button{
+			background-color: #2c3e50;
+			color:#bdc3c7;
+			border:2px solid #2c3e50;
+		}
+		.view-button:hover{
+			background-color: #bdc3c7;
+			color:#2c3e50;
+			border:2px solid #bdc3c7;
+		}
+		@media only screen and (max-width: 600px) {
+			.grid-container {
+				display: grid;
+				grid-template-columns: auto;
+				grip-gap:10px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		{% include 'index/navbar.html' %}
+		<!--Main Content-->
+		<div class='container'>
+			<div class="columns has-margin-top-30 has-padding-40">
+				<div class="column is-9">
+					<div class="container">
+						<p class="is-size-2 is-size-4-mobile has-text-dark" style='font-weight:700'>Journals</p>
+						<div class='is-divider'></div>
+					</div>
+					<div class="grid-container has-margin-top-60">
+						{% if journals %}
+						{% for journal in journals %}
+						<div class='has-padding-10 has-background-white is-block'>
+							<article class="media">
+								<div class="media-left">
+									<figure class="image is-64x128">
+										<img src = "{{ journal.journal_thumb.url }}"  style="max-width:128px; height:200px;">
+									</figure>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p>
+											<a href="{% url 'journal_details' url=journal.journal_url %}">{{ journal.journal_name }}</a><br>
+											<span> <strong>ISSN(Print)</strong> : <span class="has-text-danger">{{ journal.issn_print }} </span></span><br>
+											<span> <strong>ISSN(Online)</strong> : <span class="has-text-danger"> {{ journal.issn_online }} </span></span><br>
+											<span> <strong>Publisher</strong> : {{ journal.publisher }} </span><br>
+											<span> <strong>Country Origin</strong> : {{ journal.origin_country }} </span><br>
+											<span class="is-pulled-right has-margin-top-30" >
+												<a href="{% url 'journal_details' url=journal.journal_url %}" class="button view-button">View More</a>
+											</span>
+										</p>
+									</div>
+								</div>
+							</article>	
+						</div>
+						{% endfor %}
+						{% else %}
+						<p class="is-size-5 has-text-danger">No Journals yet, But keep tuned in..</p>
+						{% endif %}
+					</div>
+				</div>
+
+				<div class="column">
+					{% include 'index/right-bar.html' %}
+				</div>
+			</div>
+		</div>
+
+		<!--FOOTER-->
+		{% include 'index/footer.html' %}
+	</div>
+
+</body>
+</html>

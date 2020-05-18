@@ -1,0 +1,151 @@
+#sticky-header{
+	background-color: #ff5100;
+}
+.navbar-item:hover{
+	background-color: #bf3d00;
+}
+.navbar-link:hover{
+	background-color: #bf3d00;
+}
+.is-divider{
+	display: block;
+	height:5px;
+	width:80px;
+	background-color: #ccc;
+	border:2px solid red;
+}
+.fixed-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%; 
+	z-index: 9999;
+}
+.article-button:hover{
+	color: white;
+	background-color: #2C3A47;
+}
+
+.visible-title {
+	visibility: visible;
+}
+
+.sticky-bx {
+	position: fixed;
+	right: 0px;
+	top: 10%;
+	padding: 0px;
+	width: 100px;
+	direction: rtl;
+	z-index:1000;
+}
+.hover-bx {
+	direction: ltr;
+	display: inline-block;
+	white-space: nowrap;
+	background-color: #6D214F;
+}
+.submit-article{
+	background-color:#ff5100;
+	color:white;
+	padding:10px 20px;
+	transition: 0.3s;
+	border-radius: 10px;
+}
+.submit-article:hover{
+	background-color: #bf3d00;
+		box-shadow: 0px 0px 2px #111;
+}
+
+.hover-bx:hover .ico-txt {
+	display: inline-block;
+	position: relative;
+}
+.submit-button{
+	display: block;
+	color: white;
+	padding: 10px;
+}
+
+.submit-button:hover{
+	background-color: #B33771;
+}
+.article-button{
+	display: inline block;
+	background-color: #CAD3C8;
+	color:#2C3A47;
+	padding:7px;
+	margin-right: 10px;
+	border-radius: 10px;
+	border:1px solid #CAD3C8;
+}
+.welcome{
+	color: #fff;
+	animation: welcome 2s ease;
+}
+@keyframes welcome {
+	0%   { 
+		transform: translateY(200%); 		
+	}
+	100% { 
+		transform: translateY(0%); 
+	}
+}
+
+.eas{
+	color: #ecf0f1;
+	animation: eas 2.5s ease;
+}
+@keyframes eas {
+	0%   { 
+		transform: translateY(200%); 		
+	}
+	100% { 
+		transform: translateY(0%); 
+	}
+}
+
+.eas-info{
+
+	animation: eas-info 3s ease;
+}
+@keyframes eas-info {
+	0%   { 
+		transform: translateY(300%); 		
+	}
+	100% { 
+		transform: translateY(0%); 
+	}
+}
+.eas-button{
+	display: inline-block;
+	padding:15px;
+	border: 3px solid #bf3d00;
+	border-radius:20px;
+	background-color: #bf3d00;
+	color: #fff;
+	margin-right: 20px;
+	animation: eas-button 3s ease;
+}
+
+.eas-button:hover{
+	background-color:  #bdc3c7;
+	color: #fff;
+}
+@keyframes eas-button {
+	0%   { 
+		transform: translateX(-100%); 		
+	}
+	100% { 
+		transform: translateX(0%); 
+	}
+}
+.has-image-centered{
+	margin-left:auto;
+	margin-right:auto; 
+}
+.index-container{
+	display: inline-grid;
+	grid-template-columns: auto auto;
+	padding: 10px;
+}

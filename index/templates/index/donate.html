@@ -1,0 +1,317 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Editon Consortium Publishing | Home</title>
+
+	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
+
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bulmahelper.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bulma-carousel.min.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+	<!--Slick slider-->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/dropzone.js' %}"></script>
+	<script src="{% static 'js/bulma-carousel.min.js' %}"></script>
+	<script src="https://kit.fontawesome.com/3d4a04bbba.js" crossorigin="anonymous"></script>
+</head>
+<body >
+	{% include 'index/navbar.html' %}
+	<div class='container'>
+		<br><br>
+		<p class='has-text-centered has-text-dark is-size-1' style='font-weight: 800'>Donations</p>
+		<div class='columns is-multiline'>
+			<div class='column is-3'>
+				<div class='container has-padding-top-50 has-padding-bottom-50'>
+					<p class='has-text-centered is-size-1' style='font-weight: 800'>10&#36;</p>
+				</div>
+				<div id="paypal-button-10-container"></div>
+			</div>
+			<div class='column is-3'>
+				<div class='container has-padding-top-50 has-padding-bottom-50'>
+					<p class='has-text-centered is-size-1' style='font-weight: 800'>20&#36;</p>
+				</div>
+				<div id="paypal-button-20-container"></div>
+			</div>
+			<div class='column is-3'>
+				<div class='container has-padding-top-50 has-padding-bottom-50'>
+					<p class='has-text-centered is-size-1' style='font-weight: 800'>30&#36;</p>
+				</div>
+				<div id="paypal-button-30-container"></div>
+			</div>
+			<div class='column is-3'>
+				<div class='container has-padding-top-50 has-padding-bottom-50'>
+					<p class='has-text-centered is-size-1' style='font-weight: 800'>40&#36;</p>
+				</div>
+				<div id="paypal-button-40-container"></div>
+			</div>
+			<div class='column is-3'>
+				<div class='container has-padding-top-50 has-padding-bottom-50'>
+					<p class='has-text-centered is-size-1' style='font-weight: 800'>50&#36;</p>
+				</div>
+				<div id="paypal-button-50-container"></div>
+			</div>
+			<div class='column is-3'>
+				<div class='container has-padding-top-50 has-padding-bottom-50'>
+					<p class='has-text-centered is-size-1' style='font-weight: 800'>60&#36;</p>
+				</div>
+				<div id="paypal-button-60-container"></div>
+			</div><div class='column is-3'>
+				<div class='container has-padding-top-50 has-padding-bottom-50'>
+					<p class='has-text-centered is-size-1' style='font-weight: 800'>70&#36;</p>
+				</div>
+				<div id="paypal-button-70-container"></div>
+			</div>
+			<div class='column is-3'>
+				<div class='container has-padding-top-50 has-padding-bottom-50'>
+					<p class='has-text-centered is-size-1' style='font-weight: 800'>80&#36;</p>
+				</div>
+				<div id="paypal-button-80-container"></div>
+			</div>
+			<div class='column is-3'>
+				<div class='container has-padding-top-50 has-padding-bottom-50'>
+					<p class='has-text-centered is-size-1' style='font-weight: 800'>90&#36;</p>
+				</div>
+				<div id="paypal-button-90-container"></div>
+			</div>
+			<div class='column is-3'>
+				<div class='container has-padding-top-50 has-padding-bottom-50'>
+					<p class='has-text-centered is-size-1' style='font-weight: 800'>100&#36;</p>
+				</div>
+				<div id="paypal-button-100-container"></div>
+			</div>
+		</div>
+	</div>
+	{% include 'index/footer.html' %}
+	<script src="https://www.paypal.com/sdk/js?client-id=AT7AeMHTVZ9tRAzO_TDjeqOD89Do6uPO3XBVfo6Dk1-AGT12BNJoL0uMaJx9s5p7y_t5YseE3MTm3lVJ"></script>
+	<script>
+		paypal.Buttons({
+			style: {
+				layout:  'horizontal',
+				color:   'blue',
+				shape:   'rect',
+				label:   'paypal'
+			},
+			createOrder: function(data, actions) {
+				return actions.order.create({
+					purchase_units: [{
+						amount: {
+							value: '12'
+						}
+					}]
+				});
+			},
+			onApprove: function(data, actions) {
+				return actions.order.capture().then(function(details) {
+					alert('Transaction completed by ' + details.payer.name.given_name);
+				});
+			}
+		}).render('#paypal-button-10-container');
+		paypal.Buttons({
+			style: {
+				layout:  'horizontal',
+				color:   'blue',
+				shape:   'rect',
+				label:   'paypal'
+			},
+			createOrder: function(data, actions) {
+				return actions.order.create({
+					purchase_units: [{
+						amount: {
+							value: '22'
+						}
+					}]
+				});
+			},
+			onApprove: function(data, actions) {
+				return actions.order.capture().then(function(details) {
+					alert('Transaction completed by ' + details.payer.name.given_name);
+				});
+			}
+		}).render('#paypal-button-20-container');
+		paypal.Buttons({
+			style: {
+				layout:  'horizontal',
+				color:   'blue',
+				shape:   'rect',
+				label:   'paypal'
+			},
+			createOrder: function(data, actions) {
+				return actions.order.create({
+					purchase_units: [{
+						amount: {
+							value: '32'
+						}
+					}]
+				});
+			},
+			onApprove: function(data, actions) {
+				return actions.order.capture().then(function(details) {
+					alert('Transaction completed by ' + details.payer.name.given_name);
+				});
+			}
+		}).render('#paypal-button-30-container');
+
+		paypal.Buttons({
+			style: {
+				layout:  'horizontal',
+				color:   'blue',
+				shape:   'rect',
+				label:   'paypal'
+			},
+			createOrder: function(data, actions) {
+				return actions.order.create({
+					purchase_units: [{
+						amount: {
+							value: '44'
+						}
+					}]
+				});
+			},
+			onApprove: function(data, actions) {
+				return actions.order.capture().then(function(details) {
+					alert('Transaction completed by ' + details.payer.name.given_name);
+				});
+			}
+		}).render('#paypal-button-40-container');
+		paypal.Buttons({
+			style: {
+				layout:  'horizontal',
+				color:   'blue',
+				shape:   'rect',
+				label:   'paypal'
+			},
+			createOrder: function(data, actions) {
+				return actions.order.create({
+					purchase_units: [{
+						amount: {
+							value: '54'
+						}
+					}]
+				});
+			},
+			onApprove: function(data, actions) {
+				return actions.order.capture().then(function(details) {
+					alert('Transaction completed by ' + details.payer.name.given_name);
+				});
+			}
+		}).render('#paypal-button-50-container');
+		paypal.Buttons({
+			style: {
+				layout:  'horizontal',
+				color:   'blue',
+				shape:   'rect',
+				label:   'paypal'
+			},
+			createOrder: function(data, actions) {
+				return actions.order.create({
+					purchase_units: [{
+						amount: {
+							value: '64'
+						}
+					}]
+				});
+			},
+			onApprove: function(data, actions) {
+				return actions.order.capture().then(function(details) {
+					alert('Transaction completed by ' + details.payer.name.given_name);
+				});
+			}
+		}).render('#paypal-button-60-container');
+
+		paypal.Buttons({
+			style: {
+				layout:  'horizontal',
+				color:   'blue',
+				shape:   'rect',
+				label:   'paypal'
+			},
+			createOrder: function(data, actions) {
+				return actions.order.create({
+					purchase_units: [{
+						amount: {
+							value: '75'
+						}
+					}]
+				});
+			},
+			onApprove: function(data, actions) {
+				return actions.order.capture().then(function(details) {
+					alert('Transaction completed by ' + details.payer.name.given_name);
+				});
+			}
+		}).render('#paypal-button-70-container');
+		paypal.Buttons({
+			style: {
+				layout:  'horizontal',
+				color:   'blue',
+				shape:   'rect',
+				label:   'paypal'
+			},
+			createOrder: function(data, actions) {
+				return actions.order.create({
+					purchase_units: [{
+						amount: {
+							value: '85'
+						}
+					}]
+				});
+			},
+			onApprove: function(data, actions) {
+				return actions.order.capture().then(function(details) {
+					alert('Transaction completed by ' + details.payer.name.given_name);
+				});
+			}
+		}).render('#paypal-button-80-container');
+		paypal.Buttons({
+			style: {
+				layout:  'horizontal',
+				color:   'blue',
+				shape:   'rect',
+				label:   'paypal'
+			},
+			createOrder: function(data, actions) {
+				return actions.order.create({
+					purchase_units: [{
+						amount: {
+							value: '95'
+						}
+					}]
+				});
+			},
+			onApprove: function(data, actions) {
+				return actions.order.capture().then(function(details) {
+					alert('Transaction completed by ' + details.payer.name.given_name);
+				});
+			}
+		}).render('#paypal-button-90-container');
+		paypal.Buttons({
+			style: {
+				layout:  'horizontal',
+				color:   'blue',
+				shape:   'rect',
+				label:   'paypal'
+			},
+			createOrder: function(data, actions) {
+				return actions.order.create({
+					purchase_units: [{
+						amount: {
+							value: '105'
+						}
+					}]
+				});
+			},
+			onApprove: function(data, actions) {
+				return actions.order.capture().then(function(details) {
+					alert('Transaction completed by ' + details.payer.name.given_name);
+				});
+			}
+		}).render('#paypal-button-100-container');
+	</script>
+</body>
+</html>

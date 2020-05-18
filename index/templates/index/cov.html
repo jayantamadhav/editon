@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Editon Consortium Publishing| Home</title>
+
+	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
+
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bulmahelper.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bulma-carousel.min.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+	<!--Slick slider-->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/dropzone.js' %}"></script>
+	<script src="{% static 'js/bulma-carousel.min.js' %}"></script>
+	<script src="https://kit.fontawesome.com/3d4a04bbba.js" crossorigin="anonymous"></script>
+	<style>
+		.content{
+			background-image: url({% static 'media/covid-bg.png' %});
+			background-position: center; /* Center the image */
+			background-repeat: no-repeat; /* Do not repeat the image */
+			background-size: cover;
+			min-height: 200vh;
+		}
+		body{
+			background-color: #ff6302;
+		}
+	</style>
+</head>
+<body >
+	{% include 'index/navbar.html' %}
+	<div class='content'>
+		<div class='container'>
+			<div style='height:200px !important'></div>
+			<div class='columns has-padding-top-100'>
+				<div class='column is-6'>
+					<p class='has-text-white is-size-5'>
+						<span class='is-size-4'>Hope you and your family are doing well and are in good health!</span>
+						<br><br>
+						As the entire world deals with the threat from Covid-19, I hope that you all are safe and have access to essentials during the lockdown.<br> 
+						2020 has been a very challenging year for us. Just about when we streamlined massive relief operations for the needy areas, we had to spring into action to deal with the Covid-19 challenge. 
+						<br><br>
+						Fortunately, many Researchers like yourself have come together and eased the situation with compassion and ingenuity, enabling swift and praiseworthy actions in both cases.
+						<br><br>
+						Research on Covid 19 Related article and Publish in EAS Journal of Medical Sciences free of Cost which helps many researchers for preparing its cure
+					</p>
+					<br><br><br>
+					<span class='is-size-3' style='font-weight:800;color:#2b2b2b;text-shadow: 0 0 1px #4a4a4a'>If you have any paper related to Covid-19, you may submit to <span style='color:#e3e3e3'>fasteaspublisher@gmail.com</span></span>
+					<br><br><br><br><br>
+					<div style='font-weight:800;color:#fff;text-shadow: 0 0 1px #4a4a4a'>
+						<span class='is-size-3'>This Relief Fund will -</span>
+						<span class='is-size-5'>
+							<ul>
+								<li>
+									Provide financial support, ration and meals to the needy ensuring that nobody sleeps hungry
+								</li>
+								<li>
+									Scale up food distribution centers and permitting 24x7 essentials for effective social distancing
+								</li>
+							</ul>
+						</span>
+					</div>
+					<div style='height:200px !important'></div>
+					<div style='font-weight:800;color:#fff;text-shadow: 0 0 1px #4a4a4a'>
+						<span class='is-size-3'>
+							Many of our Researchers have been asking how they can help. Depending on your personal situation, one of the following avenues are available: 
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class='columns has-margin-top-100'>
+				<div class='column'>
+					<div class='has-padding-30' style='background-color: white;border-radius: 10px'>
+						<p class='has-text-centered is-size-3' style='font-weight: 700;color:#4a4a4a'>For International Researchers</p>
+						<span style='font-weight: 700;color:#4a4a4a'>
+							Name: SCHOLARS ACADEMIC AND SCIENTIFIC SOCIETY<br>
+							Email: saspjournals@gmail.com<br>
+							Country: INDIA<br>
+							Mob: +91-9014252992<br>
+						</span>
+						<br><br><br>
+						<p class='has-text-centered'>Click below to donate</p>
+						<a href='{% url "donate" %}'>
+							<figure>
+								<img src='{% static "media/paypal.png" %}' style='margin:0 auto;'>
+							</figure>
+						</a>
+					</div>
+				</div>
+				<div class='column'>
+					<div class='has-padding-30' style='background-color: white;border-radius: 10px'>
+						<p class='has-text-centered is-size-3' style='font-weight: 700;color:#4a4a4a'>For Indian Researchers</p>
+						<span style='font-weight: 700;color:#4a4a4a'>
+							STATE BANK OF INDIA (SBI)<br>
+							Name of Account: SCHOLARS ACADEMIC AND SCIENTIFIC SOCIETY<br>
+							Account No: 33893036525<br>
+							Type of Account: Current Account<br>
+							Branch: Doboka, Nagaon, Assam-782440, India<br>
+							IFSC CODE: SBIN0017211<br>
+							SWIFT CODE: SBININBB159<br>
+						</span>
+						<figure>
+							<img src='{% static "media/sbi.png" %}' style='margin:0 auto;'>
+						</figure>
+					</div>
+				</div>
+			</div>
+			<br><br><br>
+			<span class='has-text-white is-size-4' style='font-weight: 700'>
+				Of course, if you or your loved ones need any assistance or support, or if you have any suggestions, please send me an email on fasteaspublisher@gmail.com
+			</span>
+			<br><br>
+			<span  class='has-text-white is-size-4' style='font-weight: 700'>
+				There is no any minimum or maximum limit of payment. Hence for international Author’s Minimum is USD10 due to Paypal Limitation.
+			</span>
+			<br><br><br><br>
+			{% if donators %}
+
+			<p class='has-text-centered'>
+				<span class='is-size-3' style='font-weight:800;color:#fff;text-shadow: 0 0 1px #4a4a4a'>Donators</span>
+			</p>
+			<br><br>
+			<div class='columns is-multiline'>
+				{% for d in donators %}
+				<div class='column is-3'>
+					<figure class='image is-circle'>
+						<img class='is-rounded' src='{{ d.d_picture.url }}' style='min-width:150px;max-width:150px;min-height:150px;max-height:150px;margin:0 auto;box-shadow:2px 3px 10px #424242;'>
+					</figure>
+					<p class='has-text-centered' style='font-weight:800;color:#fff;text-shadow: 0 0 1px #4a4a4a'>{{d.d_name}}</p>
+				</div>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+	</div>
+	{% include 'index/footer.html' %}
+</body>
+</html>
