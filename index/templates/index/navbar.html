@@ -37,7 +37,7 @@
 				<div class="navbar-start">
 					<div id='sticky-header-title' class='padding-20 is-hidden'>
 						<a href='{% url "index" %}'>
-							<p class='is-size-2 has-text-white' style='font-weight: 700'>EAS Publishers</p>
+							<p class='is-size-2 has-text-white' style='font-weight: 700'>Editon Consortium</p>
 						</a>
 					</div>
 
@@ -86,10 +86,10 @@
 						</a>
 
 						<div class="navbar-dropdown ">
-							<a class="navbar-item" href="{% url 'editor_login'%}">
+							<!--<a class="navbar-item" href="{% url 'editor_login'%}">
 								<button class='button is-danger'>Editor Login</button>
-							</a>
-							<a class="navbar-item" href="http://www.sassociety.com/join-editor/">
+							</a>-->
+							<a class="navbar-item" href="{% url 'join-editorial-board' %}">
 								Join Editor
 							</a>
 							<a class="navbar-item" href="">
@@ -106,10 +106,10 @@
 						</a>
 
 						<div class="navbar-dropdown ">
-							<a class="navbar-item" href="{% url 'reviewer_login'%}">
+							<!--<a class="navbar-item" href="{% url 'reviewer_login'%}">
 								<button class='button is-danger'>Reviewer Login</button>
-							</a>
-							<a class="navbar-item" href="http://www.sassociety.com/join-reviewer/">
+							</a>-->
+							<a class="navbar-item" href="{% url 'join-editorial-board' %}">
 								Join as Reviewer
 							</a>
 							<a class="navbar-item" href="{% url 'reviewer_certificate' %}">
@@ -204,3 +204,16 @@
 		</section>
 	</div>
 </div>
+
+<script>
+	$(window).scroll(function(){
+		if ($(window).scrollTop() >= 100) {
+			$('#sticky-header').addClass('fixed-header');
+			$('#sticky-header-title').removeClass('is-hidden');
+		}
+		else {
+			$('#sticky-header').removeClass('fixed-header');
+			$('#sticky-header-title').addClass('is-hidden');
+		}
+	});
+</script>

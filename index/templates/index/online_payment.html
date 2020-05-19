@@ -26,181 +26,53 @@
 	<!--Banner-->
 	<div style='background-image: url({% static "media/pay-online.jpg" %});background-size: cover;height: 50vh'>
 	</div>
-	<div class='container has-padding-bottom-100'>
-		<p class="is-size-3 is-size-4-mobile has-text-dark" style='font-weight:700'>Online Payments</p>
+	<div class='container has-padding-bottom-40 has-padding-top-40'>
+		<p class="is-size-3 is-size-5-mobile has-text-dark" style='font-weight: 700'>Paypal</p>
 		<div class='is-divider'></div>
-		<div class='columns is-multiline has-padding-top-50'>
-			<div class='column is-9	'>
-				<div class='container is-block has-padding-30' style='background-color: #2c3e50'>
-					<p class='has-text-centered has-text-white is-size-4'>Normal Process</p>
+		<div class='columns'>
+			<div class='column has-padding-10'>
+				<div class='has-background-white has-padding-10' style='height:300px'>
+					<p class='has-text-centered is-size-3' style='color:#34783e'>Step 1</p>
+					<br><br>
+					<p class='is-size-5 has-text-centered has-padding-30'>Check Processing Fee for the Journal you want to pay for</p>
 				</div>
-				<div class='columns'>
-					<div class='column'>
-						<div class='container has-padding-top-50 has-padding-bottom-50'>
-							<p class='has-text-centered is-size-1' style='font-weight: 800'>25&#36;</p>
-						</div>
-						<div class='container has-padding-bottom-20'>
-							<p class=''><i class='fa fa-check' style='color: #27ae60'></i>&nbsp; Article Processing Charges</p>
-							<p class=''><i class='fa fa-check' style='color: #27ae60'></i>&nbsp; Normal Processing Speed</p>
-						</div>
-						<div id="paypal-button-50-container"></div>
-					</div>
-					<div class='column'>
-						<div class='container has-padding-top-50 has-padding-bottom-50'>
-							<p class='has-text-centered is-size-1' style='font-weight: 800'>50&#36;</p>
-						</div>
-
-						<div class='container has-padding-bottom-20'>
-							<p class=''><i class='fa fa-check' style='color: #27ae60'></i>&nbsp; Article Processing Charges</p>
-							<p class=''><i class='fa fa-check' style='color: #27ae60'></i>&nbsp; Normal Processing Speed</p>
-						</div>
-						<div id="paypal-button-75-container"></div>
-					</div>
-					<div class='column'>
-						<div class='container has-padding-top-50 has-padding-bottom-50'>
-							<p class='has-text-centered is-size-1' style='font-weight: 800'>75&#36;</p>
-						</div>
-
-						<div class='container has-padding-bottom-20'>
-							<p class=''><i class='fa fa-check' style='color: #27ae60'></i>&nbsp; Article Processing Charges</p>
-							<p class=''><i class='fa fa-check' style='color: #27ae60'></i>&nbsp; Normal Processing Speed</p>
-						</div>
-						<div id="paypal-button-100-container"></div>
+			</div>
+			<div class='column has-padding-10'>
+				<div class='has-background-white has-padding-10 has-text-centered'  style='height:300px'>
+					<p class='has-text-centered is-size-3' style='color:#34783e'>Step 2</p>
+					<br><br>
+					<div class='has-padding-30'>
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style='margin:0px auto;'>
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="35EXED6V3AK9A">
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
 					</div>
 				</div>
 			</div>
-			<div class='column is-3'>
-				<div class='container is-block has-padding-30' style='background-color: #27ae60'>
-					<p class='has-text-centered has-text-white is-size-4'> 
-						<i class='fa fa-bolt'></i>&nbsp;Fast Track Process
-					</p>
-				</div>	
-				<div class='container has-padding-top-50 has-padding-bottom-50'>
-					<p class='has-text-centered is-size-1' style='font-weight: 800'>100&#36;</p>
+			<div class='column has-padding-10'>
+				<div class='has-background-white has-padding-10'  style='height:300px'>
+					<p class='has-text-centered is-size-3' style='color:#34783e'>Step 3</p>
+					<br><br>
+					<p class='is-size-5 has-text-centered has-padding-30'>Request for the PayPal Invoice via email</p>
 				</div>
-
-				<div class='container has-padding-bottom-20'>
-					<p class=''><i class='fa fa-check' style='color: #27ae60'></i>&nbsp; Article Processing Charges</p>
-					<p class=''><i class='fa fa-check' style='color: #27ae60'></i>&nbsp; Faster Processing Speed</p>
-					<p class=''><i class='fa fa-check' style='color: #27ae60'></i>&nbsp; Track your article </p>
-				</div>
-				<div id="paypal-button-200-container"></div>
 			</div>
 		</div>
-		<p>* Kindly check the article processing charges <a href='{% url "processing_fees" %}' style='text-decoration: underline;'>here</a> before making payments</p>
-		<div class='container has-padding-20'>
-			<p class="is-size-5 has-padding-top-30 has-text-dark" style='font-weight:700'>Other Payment Modes Available</p>
-			<div class='is-divider'></div>
-			<p class='is-size-5'>	
-				Bank Account Transfer (Both Indian and Foreign): Options will be sent with Acceptance Letter<br>
-				Western Union (Foreign)<br>
-				Money Gram (Foreign)<br>
+		<br><br>
+		<p class="is-size-3 is-size-5-mobile has-text-dark" style='font-weight: 700'>Other Payment Modes</p>
+		<div class='is-divider'></div>
+		<div class='has-background-white has-padding-30'>
+			<p>
+				<span class='strong'>Co-op Bank (Kenya)</span><br>
+				<span class='strong'>A/c no</span>: 01192882094100<br>
+				<span class='strong'>A/c Name</span>: Editon Consortium Ltd.<br>
+				<br><br>
+				<span class='strong'>Western Union</span>: Request for Details<br><br>
+				<span class='strong'>MoneyGram</span>: Request for Details
 			</p>
 		</div>
-		
 	</div>
-</div>
-{% include 'index/footer.html' %}
-<script src="https://www.paypal.com/sdk/js?client-id=AT7AeMHTVZ9tRAzO_TDjeqOD89Do6uPO3XBVfo6Dk1-AGT12BNJoL0uMaJx9s5p7y_t5YseE3MTm3lVJ"></script>
-<script>
-	paypal.Buttons({
-		style: {
-			layout:  'horizontal',
-			color:   'blue',
-			shape:   'rect',
-			label:   'paypal'
-		},
-		createOrder: function(data, actions) {
-			return actions.order.create({
-				purchase_units: [{
-					amount: {
-						value: '27'
-					}
-				}]
-			});
-		},
-		onApprove: function(data, actions) {
-			return actions.order.capture().then(function(details) {
-				alert('Transaction completed by ' + details.payer.name.given_name);
-						// Call your server to save the transaction
-						return $.ajax({
-							type: "POST",
-							async: "true",
-							cache:"false",
-							url : '/paypal-transaction-complete',
-							data: {
-								csrfmiddlewaretoken: '{{ csrf_token }}',
-								'orderID' : data.orderID
-							},
-							success: function(data){
-							},
-							error:function(data){
-							}
-						});
-					});
-		}
-	}).render('#paypal-button-50-container');
-	paypal.Buttons({
-		style: {
-			layout:  'horizontal',
-			color:   'blue',
-			shape:   'rect',
-			label:   'paypal'
-		},
-		createOrder: function(data, actions) {
-			return actions.order.create({
-				purchase_units: [{
-					amount: {
-						value: '55'
-					}
-				}]
-			});
-		},
-		onApprove: function(data, actions) {
-			return actions.order.capture().then(function(details) {
-				alert('Transaction completed by ' + details.payer.name.given_name);
-			});
-		}
-	}).render('#paypal-button-75-container');
-	paypal.Buttons({
-		style: {
-			layout:  'horizontal',
-			color:   'blue',
-			shape:   'rect',
-			label:   'paypal'
-		},
-		createOrder: function(data, actions) {
-			return actions.order.create({
-				purchase_units: [{
-					amount: {
-						value: '80'
-					}
-				}]
-			});
-		},
-		onApprove: function(data, actions) {
-			return actions.order.capture().then(function(details) {
-				alert('Transaction completed by ' + details.payer.name.given_name);
-			});
-		}
-	}).render('#paypal-button-100-container');
-	paypal.Buttons({
-		createOrder: function(data, actions) {
-			return actions.order.create({
-				purchase_units: [{
-					amount: {
-						value: '110'
-					}
-				}]
-			});
-		},
-		onApprove: function(data, actions) {
-			return actions.order.capture().then(function(details) {
-				alert('Transaction completed by ' + details.payer.name.given_name);
-			});
-		}
-	}).render('#paypal-button-200-container');
-</script>
-</div>
+	{% include 'index/footer.html' %}
 </body>
 </html>

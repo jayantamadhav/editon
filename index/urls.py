@@ -26,4 +26,5 @@ urlpatterns = [
     path('paypal-transaction-complete/', views.paypal_transaction_complete, name='paypal-transaction-complete'),
     path('medical-sciences/', views.medical_sciences, name='medical-sciences'),\
     path('donate/', views.donate, name='donate'),
+    path('join-editorial-board/', views.join_editorial, name='join-editorial-board'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -192,7 +192,7 @@ def submitManuscript(request):
 		subject = 'Manuscript Submission'
 		message = '------Personal Details------' + '\n\n' + 'Name : ' + data['title'] + ' ' + data['first'] + ' ' + data['last'] + '\n' + 'University : ' + data['university'] + '\n' + 'Address : ' + data['address'] + '\n' + 'Email : ' + data['email'] + '\n' + 'Phone : ' + data['phone'] + '\n\n' + '------Document Details------' + '\n\n' + 'Journal : ' + data['journal'] + '\n'	+ 'Artile Type : ' + data['article-type'] + '\n' + 'Manuscript Title : ' + data['manuscript-title'] + '\n' + 'Abstract : ' + data['abstract'] + '\n'
 		email_from = settings.EMAIL_HOST_USER
-		recipient_list = ['easpublisher@gmail.com',]
+		recipient_list = ['editonltd@gmail.com',]
 		email = EmailMessage( subject, message, email_from, recipient_list )
 		email.attach(file.name, file.read(), file.content_type)
 		email.send()
@@ -247,7 +247,7 @@ def publication_certificate(request):
 		subject = 'Publication Certificate'
 		message = '------Details------' + '\n\n' + 'Manuscript Title : ' + data['title'] + '\n' + 'Author(s) : ' + data['authors'] + '\n' + 'Journal : ' + data['journal'] + '\n' + 'Publication Year : ' + data['pub_year'] + '\n' + 'Volume : ' + data['volume'] + '\n' + 'Issue : ' + data['issue'] + '\n' + 'Page Numbers: ' + data['pg_no'] + '\n' + 'Email : ' + data['email'] + '\n' + 'Phone : ' + data['phone'] 
 		email_from = settings.EMAIL_HOST_USER
-		recipient_list = ['easpublisher@gmail.com',]
+		recipient_list = ['editonltd@gmail.com',]
 		email = EmailMessage( subject, message, email_from, recipient_list )
 		email.send()
 		return render(request, 'index/submitted.html', {})
@@ -273,7 +273,7 @@ def editorial_certificate(request):
 		subject = 'Editorial Certificate'
 		message = '------Details------' + '\n\n' + 'Full Name : ' + data['name'] + '\n' + 'Complete Affiliation : ' + data['affiliation'] + '\n' + 'Journal : ' + data['journal'] + '\n' + 'Certificate Type : ' + data['certificate'] + '\n' + 'Email : ' + data['email'] + '\n' + 'Phone : ' + data['phone'] 
 		email_from = settings.EMAIL_HOST_USER
-		recipient_list = ['easpublisher@gmail.com',]
+		recipient_list = ['editonltd@gmail.com',]
 		email = EmailMessage( subject, message, email_from, recipient_list )
 		email.send()
 		return render(request, 'index/submitted.html', {})
@@ -299,7 +299,7 @@ def reviewer_certificate(request):
 		subject = 'Reviewer Certificate'
 		message = '------Details------' + '\n\n' + 'Full Name : ' + data['name'] + '\n' + 'Complete Affiliation : ' + data['affiliation'] + '\n' + 'Journal : ' + data['journal'] + '\n' + 'Certificate Type : ' + data['certificate'] + '\n' + 'Email : ' + data['email'] + '\n' + 'Phone : ' + data['phone'] 
 		email_from = settings.EMAIL_HOST_USER
-		recipient_list = ['easpublisher@gmail.com',]
+		recipient_list = ['editonltd@gmail.com',]
 		email = EmailMessage( subject, message, email_from, recipient_list )
 		email.send()
 		return render(request, 'index/submitted.html', {})
@@ -338,3 +338,20 @@ def medical_sciences(request):
 		'easjms' : easjms,
 	}
 	return render(request, 'index/med-sci.html', context)
+
+def join_editorial(request):
+	if request.POST:
+		data = request.POST
+		dp = request.FILES['mem-dp']
+		resume = request.FILES['resume']
+		subject = 'Application for Editor/Reviewer'
+		message = '------Details------' + '\n\n' + 'Full Name : ' + data['name'] + '\n' + 'Email : ' + data['email'] + '\n' + 'Phone : ' + data['phone']  + 'Area of Specialization : ' + data['aos']  + 'Complete Affiliation : ' + data['aff'] + '\n' + 'List of Publciation : ' + data['lop'] + '\n'  
+		email_from = settings.EMAIL_HOST_USER
+		recipient_list = ['editonltd@gmail.com',]
+		email = EmailMessage( subject, message, email_from, recipient_list )
+		email.attach(dp.name, dp.read(), dp.content_type)
+		email.attach(resume.name, resume.read(), resume.content_type)
+		email.send()
+		return render(request, 'index/submitted.html', {})
+	context = {}
+	return render(request, 'index/join-editorial-board.html', context)
